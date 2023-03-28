@@ -1,0 +1,12 @@
+#!/bin/bash
+
+date
+cat /project/path/ip.txt | while read output
+do
+    ping -c 3 "$output" > /dev/null
+    if [ $? -eq 0 ]; then
+    echo " $output is UP! " >> /project/path/result.txt
+    else
+    echo " $output is DOWN! " >> /project/path/result.txt
+    fi
+done
